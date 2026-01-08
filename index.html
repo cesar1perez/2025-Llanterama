@@ -13,6 +13,7 @@
         body { background-color: #f1f5f9; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; margin: 0; }
         h1, h2, h3, .font-heading { font-family: 'Montserrat', sans-serif; }
         
+        /* Diseño de Tarjetas */
         .card-vendedor { background: white; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 5px solid var(--navy-deep); margin-bottom: 1.5rem; overflow: hidden; }
         .barra-bg { background: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden; }
         .barra-fill { height: 100%; transition: width 1s ease-in-out; }
@@ -27,7 +28,7 @@
         .flecha-btn { transition: transform 0.3s ease; }
         .abierto .flecha-btn { transform: rotate(180deg); }
 
-        /* Estilos para el Modal de Reglas */
+        /* Estilos del Modal */
         #modal-reglas { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.9); z-index: 1000; padding: 20px; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .modal-content { background: white; width: 100%; max-width: 400px; border-radius: 24px; padding: 24px; position: relative; border-top: 8px solid var(--blue-accent); }
     </style>
@@ -36,10 +37,29 @@
 
     <header class="bg-slate-900 text-white py-6 px-4 shadow-lg border-b-4 border-blue-600 sticky top-0 z-50 text-center">
         <h1 class="text-xl font-black uppercase tracking-tighter">Llanterama <span class="text-blue-400">Tulancingo</span></h1>
-        <p class="text-[10px] font-bold text-blue-200 uppercase tracking-[0.2em] mt-1">Estrategia Comercial Trimestral</p>
+        <p class="text-[10px] font-bold text-blue-200 uppercase tracking-[0.2em] mt-1">Control de Estrategias 2026</p>
     </header>
 
-    <section class="container mx-auto px-4 mt-6 max-w-5xl space-y-4">
+    <nav class="container mx-auto px-4 mt-6 max-w-5xl">
+        <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+            <button class="flex-1 min-w-[140px] bg-blue-600 text-white font-black py-3 rounded-xl shadow-md border-b-4 border-blue-800 uppercase text-[10px] tracking-widest">
+                ENE - FEB - MAR
+            </button>
+            <button class="flex-1 min-w-[140px] bg-slate-200 text-slate-400 font-bold py-3 rounded-xl uppercase text-[10px] tracking-widest cursor-not-allowed">
+                ABR - MAY - JUN
+            </button>
+            <button class="flex-1 min-w-[140px] bg-slate-200 text-slate-400 font-bold py-3 rounded-xl uppercase text-[10px] tracking-widest cursor-not-allowed">
+                JUL - AGO - SEP
+            </button>
+        </div>
+    </nav>
+
+    <section class="container mx-auto px-4 mt-4 max-w-5xl space-y-4">
+        <button onclick="abrirModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-black py-3 px-6 rounded-2xl shadow-lg flex items-center justify-center gap-3 transition-transform active:scale-95 uppercase tracking-tighter text-xs">
+            <i class="fas fa-gift text-gold-accent"></i>
+            Reglas de Bonificación T1
+        </button>
+
         <div class="bg-yellow-50 border-2 border-yellow-400 border-l-[10px] border-l-slate-900 p-4 rounded-xl shadow-sm">
             <div class="flex items-start gap-3 text-sm font-bold text-slate-800 leading-tight">
                 <i class="fas fa-exclamation-circle text-yellow-600 mt-1 text-lg"></i>
@@ -49,11 +69,6 @@
                 </div>
             </div>
         </div>
-
-        <button onclick="abrirModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 px-6 rounded-2xl shadow-lg flex items-center justify-center gap-3 transition-transform active:scale-95 uppercase tracking-tighter text-sm">
-            <i class="fas fa-gift text-xl animate-bounce"></i>
-            Reglas de Bonificación T1
-        </button>
     </section>
 
     <div id="modal-reglas" onclick="cerrarModal()">
@@ -62,7 +77,6 @@
                 <h2 class="text-xl font-black text-slate-900 uppercase">Bonos del Trimestre</h2>
                 <button onclick="cerrarModal()" class="text-slate-400 text-2xl"><i class="fas fa-times"></i></button>
             </div>
-            
             <div class="space-y-6">
                 <div class="flex gap-4">
                     <div class="bg-blue-100 text-blue-600 h-10 w-10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-car-battery"></i></div>
@@ -71,7 +85,6 @@
                         <p class="text-sm text-slate-600"><span class="font-bold text-blue-600">$15.00 adicional</span> por cada batería vendida a cliente nuevo.</p>
                     </div>
                 </div>
-
                 <div class="flex gap-4">
                     <div class="bg-orange-100 text-orange-600 h-10 w-10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-motorcycle"></i></div>
                     <div>
@@ -79,7 +92,6 @@
                         <p class="text-sm text-slate-600"><span class="font-bold text-orange-600">$5.00 adicionales</span> llegando al 100% de tu objetivo.</p>
                     </div>
                 </div>
-
                 <div class="flex gap-4">
                     <div class="bg-yellow-100 text-yellow-600 h-10 w-10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-oil-can"></i></div>
                     <div>
@@ -88,7 +100,6 @@
                     </div>
                 </div>
             </div>
-
             <button onclick="cerrarModal()" class="w-full mt-8 bg-slate-900 text-white font-bold py-3 rounded-xl uppercase text-xs tracking-widest">Entendido</button>
         </div>
     </div>
@@ -98,7 +109,6 @@
     </main>
 
     <script>
-        // URL DE TULANCINGO
         const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTaU2EOJQU2nQ56NwMSDAIVaAkFykM_oesKx3ZnRxZDkLjXpL10HpcNmNbrX7ZDOq4X8RendztUPQvB/pub?gid=1559244084&single=true&output=csv&v=' + Date.now();
 
         function abrirModal() { document.getElementById('modal-reglas').style.display = 'flex'; }
@@ -132,10 +142,8 @@
         function render(rows) {
             const container = document.getElementById('grid-vendedores');
             container.innerHTML = '';
-
             rows.forEach((row, index) => {
                 if (!row.VENDEDOR || row.VENDEDOR.trim() === "" || row.VENDEDOR.includes("TOTAL")) return;
-
                 const card = document.createElement('div');
                 card.id = `card-${index}`;
                 card.className = 'card-vendedor';
@@ -158,14 +166,10 @@
                     <div class="detalles-wrapper">
                         <div class="detalles-inner px-5 pb-6 bg-slate-50 border-t">
                             <div class="pt-6 space-y-8 max-w-3xl mx-auto">
-                                
                                 ${crearFila("Línea Motos", row["OBJ MOTO"], row["REAL MOTO"], row["GANANCIA MOTO"], "bg-blue-600")}
-                                
                                 <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex justify-between items-center">
                                     <div class="flex items-center gap-3">
-                                        <div class="bg-slate-100 h-12 w-12 rounded-full flex items-center justify-center">
-                                            <i class="fas fa-user-plus text-blue-600 text-xl"></i>
-                                        </div>
+                                        <div class="bg-slate-100 h-12 w-12 rounded-full flex items-center justify-center"><i class="fas fa-user-plus text-blue-600 text-xl"></i></div>
                                         <div>
                                             <p class="text-[10px] font-black text-slate-400 uppercase leading-none mb-1">Clientes Nuevos</p>
                                             <p class="text-2xl font-black text-slate-900 leading-none">${row["ACUM CLIENTES NVO"] || 0}</p>
